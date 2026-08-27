@@ -21,6 +21,17 @@ export class LoansController {
     return this.loansServices.getLoansByStatus(status);
   }
 
+  @Get(':id')
+  getLoanById(@Param('id') id: number) {
+    const loan = this.loansServices.getLoanByid(Number(id));
+
+    if (!loan) {
+      throw new NotFoundException('El prestamo con id ' + id + ' no existe');
+    }
+
+    return loan;
+  }
+
   @Delete(':id')
   deleteLoanById(@Param('id') id: string) {
     const loan = this.loansServices.getLoanByid(Number(id));
