@@ -31,6 +31,18 @@ export class LoansService {
     return this.loans.filter((loan) => loan.status === status);
   }
 
+  getLoanByName(student?: string): Loan[] {
+    if (student) {
+      const filteredLoans = this.loans.filter(
+        (loan) => loan.student === student,
+      );
+
+      return filteredLoans;
+    }
+
+    return this.loans;
+  }
+
   getLoanByid(id: number): Loan | undefined {
     return this.loans.find((loan) => loan.id === id);
   }
@@ -41,6 +53,16 @@ export class LoansService {
     if (loanToDeleteIndex !== -1) {
       this.loans.splice(loanToDeleteIndex, 1);
     }
+  }
+
+  changeStatus(id: number) {
+    const loanToUpdate = this.getLoanByid(id);
+
+    if (!loanToUpdate) {
+      return null;
+    }
+
+    return loanToUpdate.status === 'returned' ? 'borrowed' : 'returned';
   }
 
   createLoan(data: createLoanDto): Loan {
