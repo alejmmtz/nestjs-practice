@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity("dining")
+@Entity('dining')
 export class DiningEntity {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -8,7 +8,7 @@ export class DiningEntity {
   @Column()
   number!: number;
 
-  @Column({ type: "int", default: 4 })
+  @Column({ type: 'int', default: 4 })
   capacity!: number;
 
   // @OneToMany(() => OrderEntity, (order) => order.dining) //Llave foranea

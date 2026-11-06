@@ -2,5 +2,5 @@ export interface Order {
   id: number;
   customer: string;
   item: string;
-  status: "pending" | "ready";
+  status: 'pending' | 'ready';
 }
